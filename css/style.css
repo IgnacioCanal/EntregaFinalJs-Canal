@@ -30,6 +30,60 @@ img {
   background-color: #f7df1e;
 }
 
+.scroll-top-btn {
+  position: fixed;
+  z-index: 999;
+  bottom: 1vh;
+  right: calc(4.25rem + 1vh);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: #f7df1e;
+  color: #222;
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  transition: all 0.3s ease-out;
+}
+.scroll-top-btn:hover {
+  background-color: #222;
+  color: #f7df1e;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.dark-theme-btn {
+  position: fixed;
+  z-index: 999;
+  bottom: 1vh;
+  left: 1vh;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: #f7df1e;
+  color: #222;
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  transition: all 0.3s ease-out;
+}
+.dark-theme-btn:hover {
+  background-color: #222;
+  color: #f7df1e;
+}
+
+.dark-mode {
+  background-color: #222;
+  color: #f7df1e;
+}
+
 .panel {
   position: fixed;
   z-index: 998;
@@ -39,8 +93,10 @@ img {
   right: 0;
   width: 100%;
   background-color: rgba(34, 34, 34, 0.85);
+  opacity: 0;
+  visibility: hidden;
   transition: transform 0.3s ease;
-  transform: translate(0, 100%);
+  transform: translate(100%, 0);
 }
 .panel .menu {
   width: inherit;
@@ -67,6 +123,8 @@ img {
 
 .is-active {
   transform: translate(0, 0);
+  opacity: 1;
+  visibility: visible;
 }
 
 .section {

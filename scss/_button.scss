@@ -11,3 +11,55 @@
   align-items: center;
   background-color: $main-color;
 }
+
+.scroll-top-btn{
+  position: fixed;
+  z-index: 999;
+  bottom: 1vh;
+  right: calc(4.25rem + 1vh);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: $main-color;
+  color: $second-color;
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  transition: all 0.3s ease-out;
+  &:hover{
+    background-color: $second-color;
+    color: $main-color;
+  }
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.dark-theme-btn {
+  position: fixed;
+  z-index: 999;
+  bottom: 1vh;
+  left: 1vh;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: $main-color;
+  color: $second-color;
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  transition: all 0.3s ease-out;
+  &:hover{
+    background-color: $second-color;
+    color: $main-color;
+  }
+}
+.dark-mode {
+  background-color: $second-color;
+  color: $main-color;
+}

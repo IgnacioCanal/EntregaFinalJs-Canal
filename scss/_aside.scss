@@ -7,8 +7,10 @@
   right: 0;
   width: 100%;
   background-color: $second-modal-color;
+  opacity: 0;
+  visibility: hidden;
   transition: transform 0.3s ease;
-  transform: translate(0,100%);
+  transform: translate(100%,0);
   .menu{
     width: inherit;
     display: flex;
@@ -34,4 +36,6 @@
 }
 .is-active{
   transform: translate(0,0);
+  opacity: 1;
+  visibility: visible;
 }
