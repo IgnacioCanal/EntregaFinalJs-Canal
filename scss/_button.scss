@@ -1,0 +1,13 @@
+.boton{
+  position: fixed;
+  z-index: 999;
+  bottom:1vh;
+  right: 1vw;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $main-color;
+}

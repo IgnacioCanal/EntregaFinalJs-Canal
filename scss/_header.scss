@@ -1,0 +1,10 @@
+.header{
+  position: sticky;
+  top: 0;
+  padding: 1rem;
+  background-color: $main-color;
+  color: $second-color;
+  h1{
+    text-align: center;
+  }
+}
