@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.2.1/hamburgers.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" href="./css/style.css">
   <title>Victornillo Ferreteria</title>
 </head>
@@ -18,7 +19,7 @@
   </button>
   <aside class="panel">
     <nav class="menu">
-      <a href="#seccion1">Sección 1</a>
+      <a href="#seccion1">Busquedas</a>
       <a href="#seccion2">Sección 2</a>
       <a href="#seccion3">Sección 3</a>
       <a href="#seccion4">Sección 4</a>
@@ -27,7 +28,24 @@
   </aside>
   <main>
     <section id="seccion1" class="section">
-      <h2>Sección 1</h2>
+      <h2>Filtros de Búsquedas</h2>
+      <input type="search" placeholder="Buscar.." class="card-filter">
+      <div class="row row-cols-1 row-cols-md-3 g-4 card-group" id="container"></div>
+      <template>
+        <div class="col cards">
+          <div class="card text-bg-dark border-warning">
+            <div class="card-body">
+              <h5 class="card-title text-warning">producto</h5>
+              <img class="imagen" src="" alt="">
+              <p class="card-categoria">Categoría</p>
+              <p class="card-price">Precio</p>
+              <p class="card-id">Id</p>
+              <p class="card-stock">Stock</p>
+              <button class="btn btn-warning">Agregar al Carrito</button>
+            </div>
+          </div>
+        </div>
+      </template>  
     </section>
     <section id="seccion2" class="section">
       <h2>Sección 2</h2>
@@ -47,6 +65,8 @@
   </main>
   <button class="scroll-top-btn">&#11014</button>
   <button class="dark-theme-btn">🌚</button>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="./js/productos.js" type="module"></script>
   <script src="./js/app.js" type="module"></script>
 </body>
 

@@ -137,9 +137,16 @@ img {
   min-height: 100vh;
   text-align: center;
 }
+.section .card-filter {
+  margin: 2rem;
+  padding: 0.5rem;
+  width: 50%;
+  border-color: #f7df1e;
+}
 
 .header {
   position: sticky;
+  z-index: 999;
   top: 0;
   padding: 1rem;
   background-color: #f7df1e;
