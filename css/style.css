@@ -13,7 +13,7 @@ body {
 
 img {
   max-width: 100%;
-  height: auto;
+  height: 350px;
 }
 
 .boton {
@@ -142,6 +142,10 @@ img {
   padding: 0.5rem;
   width: 50%;
   border-color: #f7df1e;
+}
+
+.filter {
+  display: none;
 }
 
 .header {

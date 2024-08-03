@@ -6,7 +6,8 @@ class Producto {
     let tipos_categoria = [
       'Maquinas',
       'Clavos y Tornillos',
-      'Herramientas'
+      'Herramientas',
+      'Electricidad'
     ]
 
     this.nombre = nombre
@@ -14,7 +15,7 @@ class Producto {
     this.precio = precio
     this.id = id_productos++
     this.img = `./assets/img/${nombre.toLowerCase()}.jpg`
-    this.stock = rand_int(1, 30)
+    this.stock = rand_int(0, 30)
   }
 }
 
@@ -24,6 +25,17 @@ let productos =[
   new Producto('Destornillador_Paleta',4000,2),
   new Producto('Agujereadora', 50000,0),
   new Producto('Cinta_Metrica', 6000,2),
+  new Producto('Alicate', 8000,2),
+  new Producto('Cajon_150_Piezas', 100000,2),
+  new Producto('Enchufe_Exterior', 2000,2),
+  new Producto('Foco_15w', 1500,3),
+  new Producto('Foco_Inteligente', 12000,3),
+  new Producto('Llaves', 6500,2),
+  new Producto('Pico_de_Loro', 11000,2),
+  new Producto('Triple', 2500,3),
+  new Producto('Zapatilla', 9000,3),
+  new Producto('Taladro_Inalambrico', 160000,0),
+  new Producto('Caladora', 70000,0),
 ]
 
 let container_cards = d.querySelector('#container')
