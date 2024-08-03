@@ -146,7 +146,7 @@ img {
 
 .header {
   position: sticky;
-  z-index: 999;
+  z-index: 998;
   top: 0;
   padding: 1rem;
   background-color: #f7df1e;

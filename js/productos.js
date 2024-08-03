@@ -45,6 +45,3 @@ productos.forEach((producto) => {
 
   container_cards.append(copia_plantilla);
 });
-
-console.log(producto)
-console.log(copia_plantilla)
