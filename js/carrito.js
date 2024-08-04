@@ -75,6 +75,7 @@ function quitarDelCarrito(id) {
     actualizarContador();
     renderizarVentanaCarrito();
     renderProductos();
+    mostrarNotificacion(`Quitaste ${producto.nombre} de tu carrito.`)
     localStorage.setItem("carrito", JSON.stringify(carrito));
   }
 }
