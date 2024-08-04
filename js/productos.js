@@ -39,6 +39,7 @@ let productos = [
   new Producto("Caladora", 70000, 0),
 ];
 
+//Función para calcular el stock aleatorio.
 function rand_int(min, max) {
   return Math.ceil(Math.random() * (max - min) + min);
 }
@@ -74,7 +75,7 @@ function renderProductos() {
       }
     });
     if (producto.stock === 0) {
-      copia_plantilla.querySelector(".card").style.opacity = "0.5";
+      copia_plantilla.querySelector(".card").style.opacity = "0.5"; // Para que se vea cuando algún producto se queda sin Stock
       btnAgregar.disabled = true;
     }
 

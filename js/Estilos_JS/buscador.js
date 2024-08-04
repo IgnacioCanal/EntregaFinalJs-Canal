@@ -1,3 +1,5 @@
+
+//Función para la barra buscadora de productos.
 export default function searchFilters(input, selector) {
   document.addEventListener("keyup", (e) => {
     if (e.target.matches(input)) {

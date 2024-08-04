@@ -1,6 +1,7 @@
 const d = document,
   ls = localStorage;
 
+  //Función para hacer el botón Claro/Oscuro abajo a la izquierda de la pantalla
 export default function darkTheme(btn, classDark) {
   const $themeBtn = d.querySelector(btn),
     $selectors = d.querySelectorAll("[data-dark]");

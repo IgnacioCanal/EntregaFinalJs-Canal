@@ -1,6 +1,7 @@
 const d = document,
   w = window;
 
+  //Función para que aparezca un botón para subir a determianda distancia de la barra de scroll.
 export default function scrollTopButton (btn) {
   const $scrollBtn = d.querySelector(btn);
 

@@ -1,3 +1,4 @@
+//Función para el menú hamburguesa de abajo a la derecha.
 export default function hamburgerMenu(panelBtn,panel,menuLink){
   const d = document;
 

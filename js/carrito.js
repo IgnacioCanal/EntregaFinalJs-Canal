@@ -8,6 +8,7 @@ const carritoContador = d.querySelector("#carrito-contador");
 const carritoVentana = d.querySelector("#carrito-ventana");
 const iconoCarrito = d.querySelector("#icono-carrito");
 
+//Función para encontrar el carrito guardado o no.
 function cargarCarrito() {
   const carritoGuardado = localStorage.getItem("carrito");
   if (carritoGuardado) {
@@ -19,7 +20,7 @@ function cargarCarrito() {
     }
   }
 }
-
+//Llamo a la función para cargar el carrito
 document.addEventListener("DOMContentLoaded", () => {
   cargarCarrito();
 });
@@ -31,7 +32,7 @@ function actualizarContador() {
   carritoContador.textContent = contador;
 }
 
-// Función para mostrar notificación
+// Función para mostrar cualquier notificación pertinente
 function mostrarNotificacion(mensaje) {
   Toastify({
     text: mensaje,
@@ -56,6 +57,7 @@ function agregarAlCarrito(producto) {
   }
   producto.stock -= 1;
 
+  //Guardo los nuevos productos al Storage
   localStorage.setItem("carrito", JSON.stringify(carrito));
   actualizarContador();
   mostrarNotificacion(`Agregaste ${producto.nombre} a tu carrito`);
@@ -121,6 +123,7 @@ function renderizarVentanaCarrito() {
   });
 }
 
+//Función para guardar el pedido, limpiar el carrito y actualizar el Storage.
 function realizarPedido() {
   if (carrito.length > 0) {
     console.log("Pedido Guardado:", carrito);
@@ -139,7 +142,7 @@ function realizarPedido() {
 function ocultarVentanaCarrito() {
   carritoVentana.classList.remove("visible");
 }
-
+//Función para que se vea el contenido del carrito.
 iconoCarrito.addEventListener("click", () => {
   carritoVentana.classList.toggle("visible");
 });
