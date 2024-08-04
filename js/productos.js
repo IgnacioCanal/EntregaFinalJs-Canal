@@ -70,7 +70,7 @@ function renderProductos() {
     btnAgregar.addEventListener("click", () => {
       if (producto.stock > 0) {
         agregarAlCarrito(producto);
-        renderProductos(); // Re-renderiza los productos para actualizar el stock
+        renderProductos(); // Renderiza los productos para actualizar el stock
       }
     });
     if (producto.stock === 0) {
