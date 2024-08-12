@@ -1,0 +1,130 @@
+[
+  {
+    "nombre": "Martillo",
+    "categoria": "Herramientas",
+    "precio": 10000,
+    "id": 1,
+    "img": "./assets/img/martillo.jpg",
+    "stock": 19
+  },
+  {
+    "nombre": "Destornillador Philips",
+    "categoria": "Herramientas",
+    "precio": 4000,
+    "id": 2,
+    "img": "./assets/img/destornillador philips.jpg",
+    "stock": 12
+  },
+  {
+    "nombre": "Destornillador Paleta",
+    "categoria": "Herramientas",
+    "precio": 4000,
+    "id": 3,
+    "img": "./assets/img/destornillador paleta.jpg",
+    "stock": 29
+  },
+  {
+    "nombre": "Agujereadora",
+    "categoria": "Maquinas",
+    "precio": 50000,
+    "id": 4,
+    "img": "./assets/img/agujereadora.jpg",
+    "stock": 17
+  },
+  {
+    "nombre": "Cinta Metrica",
+    "categoria": "Herramientas",
+    "precio": 6000,
+    "id": 5,
+    "img": "./assets/img/cinta metrica.jpg",
+    "stock": 3
+  },
+  {
+    "nombre": "Alicate",
+    "categoria": "Herramientas",
+    "precio": 8000,
+    "id": 6,
+    "img": "./assets/img/alicate.jpg",
+    "stock": 24
+  },
+  {
+    "nombre": "Cajon 150 Piezas",
+    "categoria": "Herramientas",
+    "precio": 100000,
+    "id": 7,
+    "img": "./assets/img/cajon 150 piezas.jpg",
+    "stock": 24
+  },
+  {
+    "nombre": "Enchufe Exterior",
+    "categoria": "Herramientas",
+    "precio": 2000,
+    "id": 8,
+    "img": "./assets/img/enchufe exterior.jpg",
+    "stock": 29
+  },
+  {
+    "nombre": "Foco 15w",
+    "categoria": "Electricidad",
+    "precio": 1500,
+    "id": 9,
+    "img": "./assets/img/foco 15w.jpg",
+    "stock": 2
+  },
+  {
+    "nombre": "Foco Inteligente",
+    "categoria": "Electricidad",
+    "precio": 12000,
+    "id": 10,
+    "img": "./assets/img/foco inteligente.jpg",
+    "stock": 2
+  },
+  {
+    "nombre": "Llaves",
+    "categoria": "Herramientas",
+    "precio": 6500,
+    "id": 11,
+    "img": "./assets/img/llaves.jpg",
+    "stock": 20
+  },
+  {
+    "nombre": "Pico de Loro",
+    "categoria": "Herramientas",
+    "precio": 11000,
+    "id": 12,
+    "img": "./assets/img/pico de loro.jpg",
+    "stock": 6
+  },
+  {
+    "nombre": "Triple",
+    "categoria": "Electricidad",
+    "precio": 2500,
+    "id": 13,
+    "img": "./assets/img/triple.jpg",
+    "stock": 19
+  },
+  {
+    "nombre": "Zapatilla",
+    "categoria": "Electricidad",
+    "precio": 9000,
+    "id": 14,
+    "img": "./assets/img/zapatilla.jpg",
+    "stock": 4
+  },
+  {
+    "nombre": "Taladro Inalambrico",
+    "categoria": "Maquinas",
+    "precio": 160000,
+    "id": 15,
+    "img": "./assets/img/taladro inalambrico.jpg",
+    "stock": 22
+  },
+  {
+    "nombre": "Caladora",
+    "categoria": "Maquinas",
+    "precio": 70000,
+    "id": 16,
+    "img": "./assets/img/caladora.jpg",
+    "stock": 3
+  }
+]

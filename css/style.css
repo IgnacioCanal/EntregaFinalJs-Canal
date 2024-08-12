@@ -19,9 +19,9 @@ body .notificacion {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 10%;
-  box-shadow: 0 1 10px rgba(6, 5, 5, 0.1);
+  box-shadow: 0 1px 10px rgba(6, 5, 5, 0.1);
   z-index: 1000;
-  color:#f7df1e;
+  color: #f7df1e;
 }
 
 img {
@@ -60,6 +60,7 @@ img {
   border: 0;
   transition: all 0.3s ease-out;
 }
+
 .scroll-top-btn:hover {
   background-color: #222;
   color: #f7df1e;
@@ -87,6 +88,7 @@ img {
   border: 0;
   transition: all 0.3s ease-out;
 }
+
 .dark-theme-btn:hover {
   background-color: #222;
   color: #f7df1e;
@@ -111,6 +113,7 @@ img {
   transition: transform 0.3s ease;
   transform: translate(100%, 0);
 }
+
 .panel .menu {
   width: inherit;
   display: flex;
@@ -119,6 +122,7 @@ img {
   align-items: center;
   text-align: center;
 }
+
 .panel .menu a {
   padding: 2rem;
   width: inherit;
@@ -128,6 +132,7 @@ img {
   color: #f7df1e;
   transition: all 0.3s ease;
 }
+
 .panel .menu a:hover {
   font-weight: bold;
   color: #222;
@@ -150,12 +155,14 @@ img {
   min-height: 100vh;
   text-align: center;
 }
+
 .section .card-filter {
   margin: 2rem;
   padding: 0.5rem;
   width: 50%;
   border-color: #f7df1e;
 }
+
 .section .proceso {
   font-weight: bold;
   font-size: 2rem;
@@ -173,9 +180,11 @@ img {
   background-color: #f7df1e;
   color: #222;
 }
+
 .header h1 {
   text-align: center;
 }
+
 #carrito-container {
   position: relative;
   display: inline-block;
@@ -184,11 +193,12 @@ img {
 #icono-carrito {
   background: #f7df1e;
   border: none;
-  border-radius: 50%;
-  padding: 0.5rem;
+  border-radius: 5px;
+  padding: 10px 20px;
   font-size: 1.5rem;
   cursor: pointer;
   position: relative;
+  width: calc(100% - 30px);
 }
 
 #carrito-contador {
@@ -202,13 +212,12 @@ img {
   font-size: 0.75rem;
 }
 
-
 #carrito-ventana {
   display: none;
   position: absolute;
   top: 100%;
-  width: 1000px;
-  max-height: auto; 
+  width: 700px;
+  height: auto;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -225,9 +234,10 @@ img {
 .carrito-item {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 1rem;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding: 1rem;
 }
 
 .carrito-item img {
@@ -239,20 +249,43 @@ img {
 
 .carrito-item p {
   margin: 0;
+  flex-grow: 1;
+}
+
+.carrito-item .btn-group {
+  display: flex;
+  gap: 5px;
+  margin: 5px;
 }
 
 .carrito-item button {
   background-color: #f7df1e;
   border: none;
   color: #222;
-  padding: 0.25rem 0.5rem;
+  padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
   margin-left: auto;
+  transition: background-color 0.3s ease;
 }
 
 .carrito-item button:hover {
   background-color: #f0c100;
+}
+
+#btn-eliminar-todo {
+  margin: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #dc3545; /* Color rojo para eliminar */
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#btn-eliminar-todo:hover {
+  background-color: #c82333;
 }
 
 #carrito-ventana p {
@@ -272,4 +305,31 @@ img {
 #carrito-ventana button:hover {
   background-color: #218838;
 }
-/*# sourceMappingURL=style.css.map */
+
+.filter-container {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-container input,
+.filter-container select {
+  padding: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.filter-container select {
+  cursor: pointer;
+}
+.filter-container input:focus,
+.filter-container select:focus {
+  border-color: #007bff;
+  outline: none;
+}

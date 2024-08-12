@@ -5,6 +5,7 @@ import responsiveMedia from "./Estilos_JS/objetos_responsivos.js";
 import darkTheme from "./Estilos_JS/tema_oscuro.js";
 import { renderProductos } from "./productos.js";
 import { cargarCarrito } from "./carrito.js";
+import { productos } from "./productos.js";
 
 const d = document;
 
@@ -23,5 +24,3 @@ d.addEventListener("DOMContentLoaded", (e) => {
 });
 
 darkTheme(".dark-theme-btn", "dark-mode");
-
-

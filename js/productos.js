@@ -22,20 +22,20 @@ class Producto {
 
 let productos = [
   new Producto("Martillo", 10000, 2),
-  new Producto("Destornillador_Philips", 4000, 2),
-  new Producto("Destornillador_Paleta", 4000, 2),
+  new Producto("Destornillador Philips", 4000, 2),
+  new Producto("Destornillador Paleta", 4000, 2),
   new Producto("Agujereadora", 50000, 0),
-  new Producto("Cinta_Metrica", 6000, 2),
+  new Producto("Cinta Metrica", 6000, 2),
   new Producto("Alicate", 8000, 2),
-  new Producto("Cajon_150_Piezas", 100000, 2),
-  new Producto("Enchufe_Exterior", 2000, 2),
-  new Producto("Foco_15w", 1500, 3),
-  new Producto("Foco_Inteligente", 12000, 3),
+  new Producto("Cajon 150 Piezas", 100000, 2),
+  new Producto("Enchufe Exterior", 2000, 2),
+  new Producto("Foco 15w", 1500, 3),
+  new Producto("Foco Inteligente", 12000, 3),
   new Producto("Llaves", 6500, 2),
-  new Producto("Pico_de_Loro", 11000, 2),
+  new Producto("Pico de Loro", 11000, 2),
   new Producto("Triple", 2500, 3),
   new Producto("Zapatilla", 9000, 3),
-  new Producto("Taladro_Inalambrico", 160000, 0),
+  new Producto("Taladro Inalambrico", 160000, 0),
   new Producto("Caladora", 70000, 0),
 ];
 
@@ -44,11 +44,11 @@ function rand_int(min, max) {
   return Math.ceil(Math.random() * (max - min) + min);
 }
 
-function renderProductos() {
+function renderProductos(productosLista = productos) {
   const container_cards = d.querySelector("#container");
   container_cards.innerHTML = ""; // Limpia el contenedor antes de renderizar
 
-  productos.forEach((producto) => {
+  productosLista.forEach((producto) => {
     let copia_plantilla = d.querySelector("template").content.cloneNode(true);
 
     copia_plantilla.querySelector("h5").textContent = producto.nombre;
@@ -77,10 +77,46 @@ function renderProductos() {
     if (producto.stock === 0) {
       copia_plantilla.querySelector(".card").style.opacity = "0.5"; // Para que se vea cuando algún producto se queda sin Stock
       btnAgregar.disabled = true;
+      btnAgregar.textContent = "Sin Stock";
     }
 
     container_cards.append(copia_plantilla);
   });
 }
+
+function filtrarYOrdenarProductos() {
+  const categoryFilter = d.querySelector("#category-filter").value;
+  const priceFilter = d.querySelector("#price-filter").value;
+
+  let productosFiltrados = productos;
+
+  if (categoryFilter) {
+    productosFiltrados = productosFiltrados.filter(
+      (producto) => producto.categoria === categoryFilter
+    );
+  }
+
+  if (priceFilter) {
+    productosFiltrados.sort((a, b) => {
+      if (priceFilter === "asc") {
+        return a.precio - b.precio;
+      } else if (priceFilter === "desc") {
+        return b.precio - a.precio;
+      }
+      return 0;
+    });
+  }
+
+  renderProductos(productosFiltrados);
+}
+
+// Escuchar eventos de los selectores para filtrar y ordenar
+d.addEventListener("DOMContentLoaded", () => {
+  d.querySelector("#category-filter").addEventListener("change", filtrarYOrdenarProductos);
+  d.querySelector("#price-filter").addEventListener("change", filtrarYOrdenarProductos);
+
+  // Renderizar productos iniciales
+  renderProductos();
+});
 
 export { productos, renderProductos };

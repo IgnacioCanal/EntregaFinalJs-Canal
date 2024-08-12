@@ -21,7 +21,6 @@
       </div>
     </div>
   </header>
-  <div id="carrito-ventana" class="carrito-ventana">
   </div>
   <button class="boton hamburger hamburger--spin" type="button">
     <span class="hamburger-box">
@@ -38,7 +37,23 @@
   <main>
     <section id="seccion1" class="section">
       <h2>Filtros de Búsquedas</h2>
-      <input type="search" placeholder="..Buscar el Producto que necesites.." class="card-filter"> 
+      <section>
+        <div class="filter-container">
+          <input type="search" placeholder="Buscar" class="card-filter">
+          <select id="category-filter">
+            <option value="">Categorias</option>
+            <option value="Maquinas">Maquinas</option>
+            <option value="Clavos y Tornillos">Clavos y Tornillos</option>
+            <option value="Herramientas">Herramientas</option>
+            <option value="Electricidad">Electricidad</option>
+          </select>
+          <select id="price-filter">
+            <option value="">Ordenar por Precio</option>
+            <option value="asc">Menor a mayor</option>
+            <option value="desc">Mayor a menor</option>
+          </select>
+        </div>
+      </section>
       <h3>Productos</h3>
       <div class="row row-cols-1 row-cols-md-3 g-4 card-group" id="container"></div>
       <template>
