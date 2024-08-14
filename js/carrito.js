@@ -1,5 +1,5 @@
 // carrito.js
-import { productos } from "./productos.js";
+import { productosGlobales } from "./productos.js";
 import { renderProductos } from "./productos.js";
 
 let carrito = [];
@@ -33,19 +33,19 @@ function actualizarContador() {
 }
 
 // Función para agregar productos al carrito
-function agregarAlCarrito(producto) {
-  const productoEnCarrito = carrito.find((item) => item.id === producto.id);
+function agregarAlCarrito(productosGlobales) {
+  const productoEnCarrito = carrito.find((item) => item.id === productosGlobales.id);
   if (productoEnCarrito) {
     productoEnCarrito.cantidad += 1;
   } else {
-    carrito.push({ ...producto, cantidad: 1 });
+    carrito.push({ ...productosGlobales, cantidad: 1 });
   }
-  producto.stock -= 1;
+  productosGlobales.stock -= 1;
   
   //Guardo los nuevos productos al Storage
   localStorage.setItem("carrito", JSON.stringify(carrito));
   actualizarContador();
-  mostrarNotificacion(`Agregaste ${producto.nombre} a tu carrito`);
+  mostrarNotificacion(`Agregaste ${productosGlobales.nombre} a tu carrito`);
   renderizarVentanaCarrito();
   renderProductos();
 }
@@ -59,11 +59,11 @@ function quitarDelCarrito(id) {
       carrito = carrito.filter((item) => item.id !== id);
     }
     const producto = productos.find((p) => p.id === id);
-    if (producto) producto.stock += 1;
+    if (producto) productosGlobales.stock += 1;
     actualizarContador();
     renderizarVentanaCarrito();
     renderProductos();
-    mostrarNotificacion(`Quitaste ${producto.nombre} de tu carrito.`)
+    mostrarNotificacion(`Quitaste ${productosGlobales.nombre} de tu carrito.`)
     localStorage.setItem("carrito", JSON.stringify(carrito));
   }
 }
@@ -166,7 +166,7 @@ function eliminarProductos(id){
   const productoEnCarrito = carrito.find((item) => item.id === id);
   if (productoEnCarrito) {
     // Aumentar el stock del producto eliminado
-    const producto = productos.find((p) => p.id === id);
+    const producto = productosGlobales.find((p) => p.id === id);
     if (producto) {
       producto.stock += productoEnCarrito.cantidad;
     }
@@ -176,7 +176,7 @@ function eliminarProductos(id){
     actualizarContador();
     renderizarVentanaCarrito();
     renderProductos();
-    mostrarNotificacion(`Eliminiaste todos tus ${producto.nombre}.`)
+    mostrarNotificacion(`Eliminiaste todos tus ${productosGlobales.nombre}.`)
   }
 }
 
