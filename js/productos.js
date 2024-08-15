@@ -150,7 +150,7 @@ d.addEventListener("DOMContentLoaded", () => {
   d.querySelector('#convertToDollar').addEventListener('click', (event) =>{
     event.stopPropagation();
     convertirPrecios();
-    actualizarCarritoADolares();
+    actualizarCarritoADolares(valorDolar);
 });
   // Renderizar productos iniciales
   renderProductos();

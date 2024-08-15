@@ -4,7 +4,7 @@ export function obtenerPrecioDolar() {
     .then(response => response.json())
     .then(data => {
       valorDolar = data.venta; // Ajusta esto según el formato de la respuesta de la API
-      document.getElementById('valor-dolar').textContent = valorDolar.toFixed(2); // Muestra el valor con 2 decimales
+      document.getElementById('valor-dolar').textContent = `$${valorDolar.toFixed(2)}`; // Muestra el valor con 2 decimales
     })
     .catch(error => {
       console.error('Error al obtener el precio del dólar:', error);

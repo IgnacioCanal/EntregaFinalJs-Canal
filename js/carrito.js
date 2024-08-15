@@ -3,6 +3,7 @@ import { productos } from "./productos.js";
 import { renderProductos } from "./productos.js";
 import { valorDolar } from "./dolarhoy.js";
 
+let preciosCarritoEnDolares = false;
 let carrito = [];
 const d = document;
 const carritoContador = d.querySelector("#carrito-contador");
@@ -102,7 +103,7 @@ function renderizarVentanaCarrito() {
   );
   const totalP = d.createElement("p");
   totalP.className = "total-precio";
-  totalP.setAttribute("data-total-precio", totalP);
+  totalP.setAttribute("data-total-precio", total);
   totalP.textContent = `Total: $${total}`;
   carritoVentana.appendChild(totalP);
 
@@ -222,22 +223,32 @@ iconoCarrito.addEventListener("click", () => {
 });
 
 function actualizarCarritoADolares(valorDolar) {
-  const itemsCarrito = document.querySelectorAll('.precio-item');
-  console.log(itemsCarrito);
-  const totalP = document.querySelector('.total-precio');
-  itemsCarrito.forEach(item => {
-      const precioEnPesos = parseFloat(item.getAttribute('data-precio'));
-      const precioEnDolares = precioEnPesos / valorDolar;
-      item.textContent = `${precioEnDolares.toFixed(2)}`;
+  const itemsCarrito = document.querySelectorAll(".precio-item");
+  const totalP = document.querySelector(".total-precio");
+  itemsCarrito.forEach((item) => {
+    const precioOriginal = parseFloat(item.getAttribute("data-precio"));
+    if (preciosCarritoEnDolares) {
+      const precioEnPesos = precioOriginal;
+      item.textContent = `$${precioEnPesos.toFixed(2)}`;
+    } else {
+      const precioEnDolares = precioOriginal / valorDolar;
+      item.textContent = `${precioEnDolares.toFixed(2)} USD`;
+    }
   });
 
-  // Actualizar el total
-  const totalEnPesos = parseFloat(totalP.getAttribute('data-total-precio'));
-  const totalEnDolares = totalEnPesos / valorDolar;
-  totalP.textContent = `Total: $${totalEnDolares.toFixed(2)}`;
+  if (totalP) {
+    // Actualizar el total
+    const totalOriginal = parseFloat(totalP.getAttribute("data-total-precio"));
+    if (preciosCarritoEnDolares) {
+      totalP.textContent = `Total: $${totalOriginal.toFixed(2)}`;
+    } else {
+      const totalEnDolares = totalOriginal / valorDolar;
+      totalP.textContent = `Total: ${totalEnDolares.toFixed(2)} USD`;
+    }
+  }
+  // Alternar el estado de la moneda
+  preciosCarritoEnDolares = !preciosCarritoEnDolares;
 }
-
-
 
 //Acá sería escuchar el evento Click fuera de la ventana, siempre y cuando la ventana esté abierta
 d.addEventListener("click", (e) => {
@@ -252,4 +263,10 @@ d.addEventListener("click", (e) => {
   }
 });
 
-export { agregarAlCarrito, quitarDelCarrito, realizarPedido, cargarCarrito, actualizarCarritoADolares };
+export {
+  agregarAlCarrito,
+  quitarDelCarrito,
+  realizarPedido,
+  cargarCarrito,
+  actualizarCarritoADolares,
+};
