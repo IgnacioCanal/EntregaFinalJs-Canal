@@ -100,6 +100,7 @@ function renderizarVentanaCarrito() {
     0
   );
   const totalP = d.createElement("p");
+  totalP.setAttribute('total-precio', totalP)
   totalP.textContent = `Total: $${total}`;
   carritoVentana.appendChild(totalP);
   

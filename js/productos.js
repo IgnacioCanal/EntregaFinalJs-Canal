@@ -1,7 +1,8 @@
 import { agregarAlCarrito } from "./carrito.js";
+import { valorDolar } from './dolarhoy.js';
 let id_productos = 1;
 const d = document;
-
+let preciosEnDolares = false; // para saber si el precio está en dolares o pesos
 class Producto {
   constructor(nombre, precio, categoria = "") {
     let tipos_categoria = [
@@ -59,6 +60,9 @@ function renderProductos(productosLista = productos) {
       ".card-price"
     ).textContent = `Precio: $${producto.precio}`;
     copia_plantilla.querySelector(
+      ".card-price"
+    ).setAttribute('data-precio', producto.precio); // Guarda el precio original en un atributo data
+    copia_plantilla.querySelector(
       ".card-id"
     ).textContent = `Id: ${producto.id}`;
     copia_plantilla.querySelector(
@@ -111,10 +115,45 @@ function filtrarYOrdenarProductos() {
 }
 
 // Escuchar eventos de los selectores para filtrar y ordenar
+
+
+function convertirPrecios() {
+  // Verifica si valorDolar está definido
+  if (typeof valorDolar === 'undefined' || valorDolar === 0) {
+    alert("No se ha podido obtener el valor del dólar.");
+    return;
+  }
+
+  // Obtén todos los elementos que muestran precios
+  const precios = d.querySelectorAll('.card-price');
+  const totalCarrito = d.querySelector('#total-carrito') 
+
+  precios.forEach(precioElem => {
+    const precioOriginal = parseFloat(precioElem.getAttribute('data-precio')); // Obtén el precio original del atributo data
+    if (preciosEnDolares) {
+      // Convertir de dólares a pesos
+      precioElem.textContent = `Precio: $${(precioOriginal).toFixed(2)}`; // Muestra el precio en pesos
+    } else {
+      // Convertir de pesos a dólares
+      precioElem.textContent = `Precio: ${ (precioOriginal / valorDolar).toFixed(2) } USD`; // Muestra el precio en dólares
+    }
+  });
+ // Alternar estado
+  preciosEnDolares = !preciosEnDolares;
+
+  // Actualizar el texto del botón
+  const boton = d.querySelector('#convertToDollar');
+  boton.textContent = preciosEnDolares ? 'Convertir a Pesos' : 'Convertir a Dólares';
+
+}
+
 d.addEventListener("DOMContentLoaded", () => {
   d.querySelector("#category-filter").addEventListener("change", filtrarYOrdenarProductos);
   d.querySelector("#price-filter").addEventListener("change", filtrarYOrdenarProductos);
-
+  d.querySelector('#convertToDollar').addEventListener('click', (event) =>{
+    event.stopPropagation();
+    convertirPrecios();
+});
   // Renderizar productos iniciales
   renderProductos();
 });
