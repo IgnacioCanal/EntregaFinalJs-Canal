@@ -1,4 +1,4 @@
-import { agregarAlCarrito } from "./carrito.js";
+import { agregarAlCarrito, actualizarCarritoADolares } from "./carrito.js";
 import { valorDolar } from "./dolarhoy.js";
 let id_productos = 1;
 const d = document;
@@ -150,6 +150,7 @@ d.addEventListener("DOMContentLoaded", () => {
   d.querySelector('#convertToDollar').addEventListener('click', (event) =>{
     event.stopPropagation();
     convertirPrecios();
+    actualizarCarritoADolares();
 });
   // Renderizar productos iniciales
   renderProductos();

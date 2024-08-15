@@ -1,6 +1,7 @@
 // carrito.js
 import { productos } from "./productos.js";
 import { renderProductos } from "./productos.js";
+import { valorDolar } from "./dolarhoy.js";
 
 let carrito = [];
 const d = document;
@@ -41,7 +42,7 @@ function agregarAlCarrito(productos) {
     carrito.push({ ...productos, cantidad: 1 });
   }
   productos.stock -= 1;
-  
+
   //Guardo los nuevos productos al Storage
   localStorage.setItem("carrito", JSON.stringify(carrito));
   actualizarContador();
@@ -63,7 +64,7 @@ function quitarDelCarrito(id) {
     actualizarContador();
     renderizarVentanaCarrito();
     renderProductos();
-    mostrarNotificacion(`Quitaste ${producto.nombre} de tu carrito.`)
+    mostrarNotificacion(`Quitaste ${producto.nombre} de tu carrito.`);
     localStorage.setItem("carrito", JSON.stringify(carrito));
   }
 }
@@ -71,7 +72,7 @@ function quitarDelCarrito(id) {
 // Función para renderizar la ventana del carrito
 function renderizarVentanaCarrito() {
   carritoVentana.innerHTML = "";
-  
+
   if (carrito.length === 0) {
     carritoVentana.innerHTML = "<p>El carrito está vacío.</p>";
     // Desactiva el botón "Eliminar Todo" si el carrito está vacío
@@ -85,7 +86,7 @@ function renderizarVentanaCarrito() {
     div.className = "carrito-item";
     div.innerHTML = `
     <img src="${item.img}" alt="${item.nombre}" />
-      <p>${item.nombre}: $${item.precio} - Cantidad: ${item.cantidad}</p>
+      <p>${item.nombre}: <spam class="precio-item" data-precio = '${item.precio}'>$${item.precio}</spam> - Cantidad: ${item.cantidad}</p>
       <div class="btn-group">
         <button class="btn-sumar" data-id="${item.id}">+</button>
         <button class="btn-restar" data-id="${item.id}">-</button>
@@ -94,21 +95,22 @@ function renderizarVentanaCarrito() {
     `;
     carritoVentana.appendChild(div);
   });
-  
+
   const total = carrito.reduce(
     (acc, item) => acc + item.precio * item.cantidad,
     0
   );
   const totalP = d.createElement("p");
-  totalP.setAttribute('total-precio', totalP)
+  totalP.className = "total-precio";
+  totalP.setAttribute("data-total-precio", totalP);
   totalP.textContent = `Total: $${total}`;
   carritoVentana.appendChild(totalP);
-  
+
   const botonRealizarPedido = d.createElement("button");
   botonRealizarPedido.textContent = "Realizar Pedido";
   botonRealizarPedido.addEventListener("click", () => realizarPedido());
   carritoVentana.appendChild(botonRealizarPedido);
-  
+
   let botonEliminarTodo = d.querySelector("#btn-eliminar-todo");
   if (!botonEliminarTodo) {
     botonEliminarTodo = d.createElement("button");
@@ -163,7 +165,7 @@ function eliminarTodoDelCarrito() {
 }
 
 //Función para eliminar todos los items de un producto
-function eliminarProductos(id){
+function eliminarProductos(id) {
   const productoEnCarrito = carrito.find((item) => item.id === id);
   if (productoEnCarrito) {
     // Aumentar el stock del producto eliminado
@@ -177,7 +179,7 @@ function eliminarProductos(id){
     actualizarContador();
     renderizarVentanaCarrito();
     renderProductos();
-    mostrarNotificacion(`Eliminiaste todos tus ${productos.nombre}.`)
+    mostrarNotificacion(`Eliminiaste todos tus ${productos.nombre}.`);
   }
 }
 
@@ -190,7 +192,9 @@ function realizarPedido() {
     localStorage.removeItem("carrito");
     actualizarContador();
     carritoVentana.innerHTML = "<p>Gracias por confiar en nosotros.</p>";
-    mostrarNotificacion("Pedido Guardado, pronto se comunicarán contigo del establecimiento.");
+    mostrarNotificacion(
+      "Pedido Guardado, pronto se comunicarán contigo del establecimiento."
+    );
   }
 }
 
@@ -217,6 +221,24 @@ iconoCarrito.addEventListener("click", () => {
   carritoVentana.classList.toggle("visible");
 });
 
+function actualizarCarritoADolares(valorDolar) {
+  const itemsCarrito = document.querySelectorAll('.precio-item');
+  console.log(itemsCarrito);
+  const totalP = document.querySelector('.total-precio');
+  itemsCarrito.forEach(item => {
+      const precioEnPesos = parseFloat(item.getAttribute('data-precio'));
+      const precioEnDolares = precioEnPesos / valorDolar;
+      item.textContent = `${precioEnDolares.toFixed(2)}`;
+  });
+
+  // Actualizar el total
+  const totalEnPesos = parseFloat(totalP.getAttribute('data-total-precio'));
+  const totalEnDolares = totalEnPesos / valorDolar;
+  totalP.textContent = `Total: $${totalEnDolares.toFixed(2)}`;
+}
+
+
+
 //Acá sería escuchar el evento Click fuera de la ventana, siempre y cuando la ventana esté abierta
 d.addEventListener("click", (e) => {
   if (carritoVentana.classList.contains("visible")) {
@@ -230,4 +252,4 @@ d.addEventListener("click", (e) => {
   }
 });
 
-export { agregarAlCarrito, quitarDelCarrito, realizarPedido, cargarCarrito };
+export { agregarAlCarrito, quitarDelCarrito, realizarPedido, cargarCarrito, actualizarCarritoADolares };
