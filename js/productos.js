@@ -3,6 +3,7 @@ import { valorDolar } from "./dolarhoy.js";
 let id_productos = 1;
 const d = document;
 let preciosEnDolares = false;
+let enDolares = false;
 
 class Producto {
   constructor(nombre, precio, categoria = "") {
@@ -26,10 +27,10 @@ let productos = [
   new Producto("Martillo", 10000, 2),
   new Producto("Destornillador Philips", 4000, 2),
   new Producto("Destornillador Paleta", 4000, 2),
-  new Producto("Agujereadora", 50000, 0),
+  new Producto("Agujereadora", 150000, 0),
   new Producto("Cinta Metrica", 6000, 2),
   new Producto("Alicate", 8000, 2),
-  new Producto("Cajon 150 Piezas", 100000, 2),
+  new Producto("Cajon 150 Piezas", 150000, 2),
   new Producto("Enchufe Exterior", 2000, 2),
   new Producto("Foco 15w", 1500, 3),
   new Producto("Foco Inteligente", 12000, 3),
@@ -37,15 +38,18 @@ let productos = [
   new Producto("Pico de Loro", 11000, 2),
   new Producto("Triple", 2500, 3),
   new Producto("Zapatilla", 9000, 3),
-  new Producto("Taladro Inalambrico", 160000, 0),
-  new Producto("Caladora", 70000, 0),
+  new Producto("Taladro Inalambrico", 260000, 0),
+  new Producto("Caladora", 120000, 0),
+  new Producto("Clavo Punta Paris", 20, 1),
+  new Producto("Tornillo Aglomerado", 45, 1),
+  new Producto("Tornillo Autoperforante", 10, 1),
+  new Producto("Cable Varios Colores", 100000, 3),
 ];
 
 //Función para calcular el stock aleatorio.
 function rand_int(min, max) {
   return Math.ceil(Math.random() * (max - min) + min);
 }
-
 function renderProductos(productosLista = productos) {
   const container_cards = d.querySelector("#container");
   container_cards.innerHTML = ""; // Limpia el contenedor antes de renderizar
@@ -92,7 +96,6 @@ function renderProductos(productosLista = productos) {
 function filtrarYOrdenarProductos() {
   const categoryFilter = d.querySelector("#category-filter").value;
   const priceFilter = d.querySelector("#price-filter").value;
-
   let productosFiltrados = productos;
 
   if (categoryFilter) {

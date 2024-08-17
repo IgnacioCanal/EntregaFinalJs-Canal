@@ -133,6 +133,8 @@ function renderizarVentanaCarrito() {
       if (producto && producto.stock > 0) {
         agregarAlCarrito(producto);
         renderizarVentanaCarrito();
+      } else if (producto.stock === 0) {
+        mostrarNotificacion(`No hay más ${producto.nombre} en stock.`);
       }
     });
   });
@@ -180,7 +182,7 @@ function eliminarProductos(id) {
     actualizarContador();
     renderizarVentanaCarrito();
     renderProductos();
-    mostrarNotificacion(`Eliminiaste todos tus ${productos.nombre}.`);
+    mostrarNotificacion(`Eliminiaste todos tus ${producto.nombre}.`);
   }
 }
 

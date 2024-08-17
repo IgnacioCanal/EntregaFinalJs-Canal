@@ -176,29 +176,48 @@ img {
   position: sticky;
   z-index: 998;
   top: 0;
-  padding: 1rem;
-  background-color: #f7df1e;
+  background: linear-gradient(135deg, #f7df1e, #ff5f5f); /* Degradado de amarillo a rojo */
   color: #222;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header h1 {
-  text-align: center;
+  font-family: 'Arial Black', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  text-transform: uppercase;
+  display: inline;
+  padding: 0.5rem;
+  border-radius: 5px;
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
+
 #carrito-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  margin: 0 1rem;
+  font-size: 1.2rem;
   position: relative;
   display: inline-block;
+  background: transparent;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #ddd;
 }
 
 #icono-carrito {
-  background: #f7df1e;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
+  background: transparent;
+  border: 1px transparent;
+  color: #f7df1e;
+  border-radius: 50%;
+  padding: 1px;
   font-size: 1.5rem;
   cursor: pointer;
-  position: relative;
-  width: calc(100% - 30px);
 }
 
 #carrito-contador {
@@ -214,9 +233,12 @@ img {
 
 #carrito-ventana {
   display: none;
-  position: absolute;
-  top: 100%;
-  width: 700px;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90vw;
+  max-width: 700px;
   height: auto;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -225,17 +247,44 @@ img {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
   z-index: 1000;
+  transition: width 0.3s ease;
 }
 
 #carrito-ventana.visible {
   display: block;
 }
 
+@media (max-width: 768px) {
+  #carrito-ventana {
+    width: 100vw;
+    max-width: none;
+    height: 80vh;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+@media (max-width: 480px) {
+  #carrito-ventana {
+    width: 100vw;
+    height: 80vh;
+    padding: 0.5rem;
+    top: 5%;
+  }
+}
+
 #precio-dolar {
-  font-size: 1.2em;
-  margin-left: 20px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex: 1;
+  margin: 0 1rem;
+  font-size: 1.2rem;
+  font-size: 1.2em;
+  margin-left: 20px;
+  border-radius: 5px;
+  padding: 1px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 #valor-dolar {
@@ -245,8 +294,14 @@ img {
 
 /* Estilo del botón convertir */
 #convertToDollar {
-  background-color: #000;
-  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  margin: 0 1rem;
+  font-size: 1.2rem;
+  background-color: #f7df1e;
+  color: #222;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -256,18 +311,26 @@ img {
 }
 
 #convertToDollar:hover {
-  background-color: #134317;
+  background-color: #f0c100;
 }
 
-#convertToDollar:active {
-  background-color: #134317;
+.dark-mode #convertToDollar {
+  background-color: #000;
+  color: #fff;
+}
+
+.dark-mode #convertToDollar:hover {
+  background-color: #222;
 }
 
 #menu-interactivo {
   display: flex;
   align-items: center;
   gap: 20px; 
-  padding: 10px 20px; 
+  padding: 10px 20px;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1rem;
 }
 
 .carrito-item {
@@ -371,4 +434,173 @@ img {
 .filter-container select:focus {
   border-color: #007bff;
   outline: none;
+}
+#seccion1 {
+  padding: 2rem;
+  border-radius: 8px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+#seccion1 h1 {
+  font-family: 'Arial', sans-serif; 
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+#seccion1 h3 {
+  font-family: 'Arial', sans-serif; 
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  text-decoration: underline;
+}
+
+#seccion1 .filter-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#seccion1 section .filter-container input,
+#seccion1 section .filter-container select {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+#seccion1 section .filter-container input {
+  background-color: #fff;
+}
+
+#seccion1 section .filter-container button {
+  background-color: #f7df1e; 
+  border: none;
+  color: #222;
+}
+
+
+.card {
+  background-color: #222; 
+  color: #f7df1e;
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card .card-body img {
+  max-width: 100%;
+  border: 2px solid #444;
+}
+
+.card .card-body .card-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card .card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card .card-body p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.card .btn {
+  background-color: #f7df1e;
+  color: #222;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card .btn:hover {
+  background-color: #f0c100;
+  color: #222;
+}
+
+
+.dark-mode .card {
+  background-color: #f7df1e;
+  color: #222;
+  border: 1px solid #666;
+}
+
+.dark-mode .card .btn {
+  background-color: #222;
+  color: #f7df1e;
+}
+
+.dark-mode .card .btn:hover {
+  background-color: #444;
+  color: #f7df1e;
+}
+
+
+@media (min-width: 768px) {
+  .card {
+    flex: 1 1 calc(25% - 2rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex: 1 1 calc(50% - 2rem); 
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    flex: 1 1 100%;
+  }
+}
+
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.no-result {
+  font-size: 30px;
+  color: #ff0000;
+  background-color: #000;
+  border-radius: 10%;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+  #menu-interactivo {
+    flex-direction: column;
+  }
+  #carrito-container, #precio-dolar, #convertToDollar {
+    margin: 0.5rem 0;
+  }
 }

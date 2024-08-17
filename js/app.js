@@ -5,6 +5,7 @@ import responsiveMedia from "./Estilos_JS/objetos_responsivos.js";
 import darkTheme from "./Estilos_JS/tema_oscuro.js";
 import { cargarCarrito } from "./carrito.js";
 
+
 const d = document;
 
 d.addEventListener("DOMContentLoaded", (e) => {
