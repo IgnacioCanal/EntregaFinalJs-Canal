@@ -242,10 +242,10 @@ function actualizarCarritoADolares(valorDolar) {
     const precioOriginal = parseFloat(item.getAttribute("data-precio"));
     if (preciosCarritoEnDolares) {
       const precioEnPesos = precioOriginal;
-      item.textContent = `$${precioEnPesos.toFixed(2)}`;
+      item.textContent = `$${precioEnPesos.toFixed(2)} C/U`;
     } else {
       const precioEnDolares = precioOriginal / valorDolar;
-      item.textContent = `${precioEnDolares.toFixed(2)} USD`;
+      item.textContent = `${precioEnDolares.toFixed(2)} USD C/U`;
     }
   });
 
