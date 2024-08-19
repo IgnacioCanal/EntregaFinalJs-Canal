@@ -19,6 +19,13 @@ d.addEventListener("DOMContentLoaded", (e) => {
   );
   searchFilters(".card-filter", ".cards");
   cargarCarrito();
+  const pedidos = JSON.parse(localStorage.getItem("pedidosRealizados")) || [];
+
+  if (pedidos.length > 0) {
+    console.log("Pedidos Realizados:", pedidos);
+  } else {
+    console.log("No hay pedidos realizados.");
+  }
 });
 
 darkTheme(".dark-theme-btn", "dark-mode");

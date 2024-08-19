@@ -180,13 +180,19 @@ img {
   color: #222;
   text-align: center;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  padding: 10px 20px;
+}
+@media (max-width: 768px) {
+  .header {
+      position: relative;
+  }
 }
 
 .header h1 {
   font-family: 'Arial Black', sans-serif;
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(0.5rem, 5vw, 1.5rem);
   text-transform: uppercase;
   display: inline;
   padding: 0.5rem;
@@ -234,21 +240,21 @@ img {
 #carrito-ventana {
   display: none;
   position: fixed;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 13.5%;
   width: 90vw;
   max-width: 700px;
   height: auto;
+  max-height: 80vh;
+  overflow-y: auto;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow-y: auto;
   z-index: 1000;
   transition: width 0.3s ease;
 }
+
 
 #carrito-ventana.visible {
   display: block;
@@ -256,22 +262,16 @@ img {
 
 @media (max-width: 768px) {
   #carrito-ventana {
-    width: 100vw;
+    width: 95vw;
     max-width: none;
-    height: 80vh;
+    height: 90vh;
     top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
+    border-radius: 4px;
+    left: 0%;
   }
 }
-@media (max-width: 480px) {
-  #carrito-ventana {
-    width: 100vw;
-    height: 80vh;
-    padding: 0.5rem;
-    top: 5%;
-  }
-}
+
 
 #precio-dolar {
   display: flex;

@@ -87,12 +87,14 @@ function renderizarVentanaCarrito() {
     div.className = "carrito-item";
     div.innerHTML = `
     <img src="${item.img}" alt="${item.nombre}" />
-      <p>${item.nombre}: <spam class="precio-item" data-precio = '${item.precio}'>$${item.precio}</spam> - Cantidad: ${item.cantidad}</p>
-      <div class="btn-group">
-        <button class="btn-sumar" data-id="${item.id}">+</button>
-        <button class="btn-restar" data-id="${item.id}">-</button>
+      <p>${item.nombre}: <spam class="precio-item" data-precio = '${item.precio}'>$${item.precio} C/U</spam> - Cantidad: ${item.cantidad}</p>
+      <div class="btns">
+        <div class="btn-group">
+          <button class="btn-sumar" data-id="${item.id}">+</button>
+          <button class="btn-restar" data-id="${item.id}">-</button>
+        </div>
+          <button class="btn-quitar-todo" data-id="${item.id}">Eliminar</button>
       </div>
-      <button class="btn-quitar-todo" data-id="${item.id}">Eliminar</button>
     `;
     carritoVentana.appendChild(div);
   });
@@ -189,7 +191,14 @@ function eliminarProductos(id) {
 //Función para guardar el pedido, limpiar el carrito y actualizar el Storage.
 function realizarPedido() {
   if (carrito.length > 0) {
+    let pedidos = JSON.parse(localStorage.getItem("pedidosRealizados")) || [];
+    pedidos.push({
+      fecha: new Date().toISOString(),
+      items: carrito
+    });
+    localStorage.setItem("pedidosRealizados", JSON.stringify(pedidos));
     console.log("Pedido Guardado:", carrito);
+    console.log(pedidos)
     // Vacía el carrito
     carrito = [];
     localStorage.removeItem("carrito");
@@ -198,6 +207,8 @@ function realizarPedido() {
     mostrarNotificacion(
       "Pedido Guardado, pronto se comunicarán contigo del establecimiento."
     );
+  } else {
+    console.log("El carrito está vacío.");
   }
 }
 
